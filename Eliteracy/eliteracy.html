@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CivAware — Cyber & E-Literacy Portal</title>
+    <!-- Font System -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Link CSS Engine -->
+    <link rel="stylesheet" href="./eliteracy.css">
+</head>
+<body>
+
+    <!-- Dynamic Glass Header -->
+    <header class="master-header">
+        <div class="header-container">
+            <button class="btn-back" id="btnBackHub" href="../index/index.html">← Back to Hub</button>
+            <div class="brand-block">
+                <h1 id="txtTitle">E-Literacy & Cyber Ethics Module</h1>
+                <p id="txtSubtitle">Master the digital world by comparing virtual threats to clear real-world physical mirrors.</p>
+            </div>
+            <div class="lang-selector">
+                <button class="lang-btn active" onclick="switchLanguage('en')">EN</button>
+                <button class="lang-btn" onclick="switchLanguage('hi')">HI</button>
+                <button class="lang-btn" onclick="switchLanguage('pa')">PA</button>
+            </div>
+        </div>
+        <label class="module-complete-bar" id="moduleCompleteBar">
+            <input type="checkbox" id="moduleCompleteCheckbox" onchange="toggleModuleComplete(this)">
+            <span id="moduleCompleteText">Mark this module as completed</span>
+        </label>
+    </header>
+
+    <!-- Master Layout Wrapper -->
+    <main class="master-main">
+        
+        <!-- Live Statistics Counter -->
+        <section class="metrics-bar">
+            <div class="metric-card">
+                <span class="metric-num" id="statTotal">00</span>
+                <span class="metric-lbl">Total Parallels</span>
+            </div>
+            <div class="metric-card">
+                <span class="metric-num" id="statActive">00</span>
+                <span class="metric-lbl">Visible Modules</span>
+            </div>
+            <div class="metric-card">
+                <span class="metric-num" id="statRead">0%</span>
+                <span class="metric-lbl">Coverage Index</span>
+            </div>
+        </section>
+
+        <!-- Invisible Thief Intro — sets up the real-world vs digital mirror teaching method -->
+        <section class="intro-banner">
+            <span class="pane-badge" id="introTag" style="background:rgba(0,242,254,0.08); color:var(--accent-primary); margin-bottom:1rem;">Before You Begin</span>
+            <h2 id="introTitle">The Thief You Can't See</h2>
+            <p id="introPara" style="color:var(--text-muted); font-size:1rem; line-height:1.7; margin:1rem 0 1.5rem;"></p>
+            <div class="intro-columns">
+                <div class="intro-col">
+                    <h5 id="introRealLabel">🧱 The Real-World Thief</h5>
+                    <p id="introRealText"></p>
+                </div>
+                <div class="intro-col accent">
+                    <h5 id="introDigitalLabel">💻 The Digital Thief</h5>
+                    <p id="introDigitalText"></p>
+                </div>
+            </div>
+            <p id="introFooter" style="color:var(--text-muted); font-size:0.95rem; line-height:1.6; margin-top:1.5rem; font-style:italic;"></p>
+        </section>
+
+        <!-- Navigation Sub-Sections Bar & Control Hub -->
+        <section class="control-hub">
+            <div class="search-box-wrapper">
+                <input type="text" id="inputSearch" placeholder="Search cyber concepts or keywords..." autocomplete="off">
+                <span class="search-icon">🔍</span>
+            </div>
+            <div class="subsections-nav" id="subsectionsNav">
+                <!-- Dynamically generated navigation links will be injected here -->
+            </div>
+        </section>
+
+        <!-- Dynamic Grid Engine -->
+        <section class="cards-grid" id="cardsGrid">
+            <!-- Parallel comparison matrix elements will inject dynamically -->
+        </section>
+
+        <!-- Integrated Validation Review Portal -->
+        <section class="review-portal-section">
+            <div class="portal-card">
+                <div class="portal-header">
+                    <h2 id="formHeading">Module Review Portal</h2>
+                    <p id="formSub">Help us refine this toolkit for communities worldwide.</p>
+                </div>
+                
+                <form id="reviewForm" onsubmit="handleReviewSubmit(event)" novalidate>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="selectModule" id="lblModule">Active Knowledge Module</label>
+                            <select id="selectModule" required>
+                                <!-- Injected dynamically via JS based on selected language -->
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputName" id="lblName">Full Name</label>
+                            <input type="text" id="inputName" placeholder="Enter your full name" required minlength="3">
+                            <span class="error-msg" id="errName"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputAge" id="lblAge">Age</label>
+                            <input type="number" id="inputAge" min="8" max="120" placeholder="e.g. 34" required>
+                            <span class="error-msg" id="errAge"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputEmail" id="lblEmail">Email Address</label>
+                            <input type="email" id="inputEmail" placeholder="name@domain.com" required>
+                            <span class="error-msg" id="errEmail"></span>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group full-width">
+                        <label for="inputMsg" id="lblMsg">Review Notes & Observations</label>
+                        <textarea id="inputMsg" rows="4" placeholder="What parts did you find easiest to understand?" required minlength="10"></textarea>
+                        <span class="error-msg" id="errMsg"></span>
+                    </div>
+
+                    <button type="submit" class="btn-submit" id="btnSubmit">Transmit Verified Review</button>
+                </form>
+                <div class="success-toast" id="successToast">✓ Review data signed and securely transmitted to sandbox logs.</div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Global Accessible Audio/Text Reader Modal -->
+    <div class="modal-overlay" id="accessibleModal">
+        <div class="modal-window">
+            <div class="modal-header">
+                <h3 id="modalTitle">Focused View</h3>
+                <button class="modal-close" onclick="closeAccessibleModal()">×</button>
+            </div>
+            <div class="modal-body" id="modalContent">
+                <!-- Focused structural view layout injected dynamically -->
+            </div>
+            <div class="modal-footer">
+                <button class="btn-audio" id="btnAudioToggle" onclick="toggleSpeechSynthesis()">🔊 Read Aloud</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Inject Data Layer Dependency First -->
+    <script src="./eliteracy-data.js"></script>
+    <!-- Inject Functional Script Controller -->
+    <script src="./eliteracy.js"></script>
+</body>
+</html>
