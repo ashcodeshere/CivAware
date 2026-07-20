@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
     initializeModuleCompleteState();
     // DIRECT RELATIVE TO RE-ROUTE BACK TO INDEX FILE
     document.getElementById("btnBackHub").addEventListener("click", () => {
-        window.location.href = "../index/index.html";
+        window.location.href = "../index.html";
     });
     
     document.getElementById("inputSearch").addEventListener("input", () => {

@@ -1,5 +1,148 @@
 <!DOCTYPE html>
-<html>
-<head><meta http-equiv="refresh" content="0; url=./index/index.html"></head>
-<body>Redirecting to CivAware…</body>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CivAware - Life Skills & Community Awareness Hub</title>
+    <link rel="stylesheet" href="./index/index.css">
+</head>
+<body>
+
+    <!-- PRIMARY TOP NAVIGATION -->
+    <nav class="navbar">
+        <div class="brand-logo" onclick="navigateTo('home')">
+            <svg width="32" height="32" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M 100,25 C 135,25 165,40 180,60 C 180,120 155,170 100,190 C 45,170 20,120 20,60 C 35,40 65,25 100,25 Z" fill="none" stroke="url(#logoTechGrad)" stroke-width="8" opacity="0.3"/>
+                <path d="M 100,35 C 75,35 50,48 36,65 C 34,110 55,145 100,175 C 100,130 80,100 75,80 C 72,68 85,45 100,35 Z" fill="url(#logoJoyGrad)"/>
+                <path d="M 100,35 C 125,35 150,48 164,65 C 166,110 145,145 100,175 C 100,130 120,100 125,80 C 128,68 115,45 100,35 Z" fill="url(#logoTechGrad)"/>
+                <defs>
+                    <linearGradient id="logoTechGrad" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" stop-color="#00f2fe"/><stop offset="100%" stop-color="#3b82f6"/></linearGradient>
+                    <linearGradient id="logoJoyGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#ffb347"/><stop offset="100%" stop-color="#ffcc33"/></linearGradient>
+                </defs>
+            </svg>
+            <h1>Civ<span id="brandSpan">Aware</span></h1>
+        </div>
+
+        <ul class="nav-links" id="navLinks">
+            <li><div class="nav-item active" id="nav-home" onclick="navigateTo('home')">Home</div></li>
+            <li><div class="nav-item" id="nav-modules" onclick="navigateTo('modules')">Awareness Modules</div></li>
+            <li><div class="nav-item" id="nav-emergency" onclick="navigateTo('emergency')">Emergency Directory</div></li>
+        </ul>
+
+        <div class="navbar-right">
+            <div class="lang-selector">
+                <button class="lang-btn active" onclick="switchLanguage('en')">EN</button>
+                <button class="lang-btn" onclick="switchLanguage('hi')">HI</button>
+                <button class="lang-btn" onclick="switchLanguage('pa')">PA</button>
+            </div>
+            <button class="hamburger-btn" id="hamburgerBtn" aria-label="Toggle navigation menu" onclick="toggleNavDrawer()">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- MAIN INTERACTIVE WRAPPER -->
+    <main class="content-wrapper">
+
+        <!-- ================= VIEW 1: HOME PAGE ================= -->
+        <div id="page-home" class="page-view active-view">
+            <div class="hero-section">
+                <div class="hero-text">
+                    <h2 id="heroTitle">Practical Life Skills for a <span>Confident &amp; Safe</span> Everyday Life.</h2>
+                    <p id="heroPara">CivAware is a welcoming space designed to equip everyday citizens, kids, and parents with foundational real-world knowledge.</p>
+                    <p>CivAware is not just a project, It is a step towards Developer's Aim of building a safe, interactive space in both Physical and Digital World</p>
+                    <div class="cta-group">
+                        <button class="btn-primary" id="btnExplore" onclick="navigateTo('modules')">Explore Life Modules</button>
+                        <button class="btn-secondary" id="btnEmergency" onclick="navigateTo('emergency')">View Emergency Contacts</button>
+                    </div>
+                </div>
+                <div class="hero-graphics-container">
+                    <div class="animated-icon-box">
+                        <div class="orbit-ring"></div>
+                        <div class="center-emoji">🌱</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TEACHING METHOD EXPLAINER — "the invisible thief" -->
+            <section class="teach-intro">
+                <span class="teach-tag" id="teachTag">How We Teach</span>
+                <h3 id="teachTitle">Every Digital Danger Has a Real-World Twin</h3>
+                <p id="teachPara1" style="color:var(--text-muted); font-size:14.5px; line-height:1.7;"></p>
+                <div class="teach-columns">
+                    <div class="teach-col real">
+                        <p id="teachPara2"></p>
+                    </div>
+                    <div class="teach-vs">VS</div>
+                    <div class="teach-col digital">
+                        <p id="teachPara3"></p>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- ================= VIEW 2: MODULES MATRIX ================= -->
+        <div id="page-modules" class="page-view">
+            <div class="section-header">
+                <h2 id="modulesHeading">Essential Life Modules</h2>
+                <p id="modulesSub">Click on any module to open up sub-topics and practical everyday toolkits.</p>
+            </div>
+
+            <div class="progress-tracker">
+                <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+                <span class="progress-label" id="progressLabel">0 / 12 modules completed</span>
+            </div>
+
+            <div class="matrix-grid" id="matrixGrid">
+                <!-- Module cards injected dynamically by index.js -->
+            </div>
+        </div>
+
+        <!-- ================= VIEW 3: EMERGENCY DIRECTORY ================= -->
+        <div id="page-emergency" class="page-view">
+            <div class="section-header">
+                <h2 id="emergencyHeading">Emergency Helpline Directory</h2>
+                <p id="emergencySub">Quick reference guide for critical situations. Keep these numbers handy.</p>
+            </div>
+
+            <div class="emergency-table-container">
+                <table class="emergency-table">
+                    <thead>
+                        <tr>
+                            <th id="thCategory">Service Category</th>
+                            <th id="thNumber">Helpline Number</th>
+                            <th id="thMode">Ideal Response Mode</th>
+                        </tr>
+                    </thead>
+                    <tbody id="emergencyTableBody">
+                        <!-- Rows injected dynamically by index.js -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- CONTENT DISPLAY OVERLAY (MODAL SUBMODULE ARCHITECTURE) -->
+    <div class="modal" id="submoduleModal">
+        <div class="modal-box card">
+            <button class="modal-close-x" onclick="closeSubmodule()">&times;</button>
+            <div id="submoduleModalContent">
+                <!-- Injected via index.js without page reload latency -->
+            </div>
+        </div>
+    </div>
+
+    <!-- STICKY STRUCTURAL WEB APP FOOTER -->
+    <footer class="app-footer">
+        <p id="footerCopyright">&copy; 2026 CivAware Project Platform. All Rights Reserved.</p>
+        <p class="credit" id="footerCredit">Created with ❤️ by Anshul Ahluwalia for a safer, happier community</p>
+        <p>Launched on July 26,2026 at 12:00 IST</p>
+    </footer> 
+
+    <!-- Inject Data Layer Dependency First -->
+    <script src="./index/index-data.js"></script>
+    <!-- Inject Functional Script Controller -->
+    <script src="./index/index.js"></script>
+</body>
 </html>
